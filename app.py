@@ -70,9 +70,17 @@ for col in baseline_data.columns:
 st.write("Jensen-Shannon Divergence:", js_divergences)
 
 # Visualization: Line Chart for Data Drift Over Time
+# st.subheader("Data Drift Over Time")
+
+# time_steps = range(10)  # Replace with actual time steps
+# data_drift_scores = np.random.rand(len(time_steps))
+
+# fig_line = go.Figure(data=go.Scatter(x=time_steps, y=data_drift_scores, mode='lines+markers'))
+# fig_line.update_layout(title="Data Drift Over Time", xaxis_title="Time", yaxis_title="Data Drift Score")
+# st.plotly_chart(fig_line)
 st.subheader("Data Drift Over Time")
 
-time_steps = range(10)  # Replace with actual time steps
+time_steps = list(range(10))  # Convert range to list
 data_drift_scores = np.random.rand(len(time_steps))
 
 fig_line = go.Figure(data=go.Scatter(x=time_steps, y=data_drift_scores, mode='lines+markers'))
