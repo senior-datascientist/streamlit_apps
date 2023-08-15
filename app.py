@@ -47,8 +47,10 @@ for i, p_value in enumerate(p_values):
 st.subheader("Feature Drift Visualization using Plotly")
 
 for col in baseline_data.columns:
+    df_concat = pd.concat([baseline_data[[col]], new_data[[col]]], keys=['Baseline', 'Incoming'], names=['Source'])
+    
     fig = px.histogram(
-        pd.concat([baseline_data[col], new_data[col]], keys=['Baseline', 'Incoming'], names=['Source']),
+        df_concat.reset_index(),  # Reset index to avoid issues with multi-index
         x=col, color='Source', nbins=30, opacity=0.7, barmode='overlay', title=f"{col} Distribution Comparison"
     )
     st.plotly_chart(fig)
