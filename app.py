@@ -19,15 +19,15 @@ def detect_data_drift(data1, data2):
 # Generate initial baseline data
 baseline_data = generate_random_data()
 
+# Generate new data for monitoring
+new_data = generate_random_data()
+
 # Create tabs in the sidebar
 tabs = st.sidebar.tabs(label='Navigation', children=[
     st.sidebar.tab(label='Data Drift', children=[
         # Content for Data Drift tab
         st.title("Data Drift Monitoring App"),
-
-        # Generate new data for monitoring
-        new_data = generate_random_data()
-
+        
         st.subheader("Baseline Data")
         st.write(baseline_data)
 
@@ -50,7 +50,7 @@ tabs = st.sidebar.tabs(label='Navigation', children=[
     st.sidebar.tab(label='Histograms', children=[
         # Content for Histograms tab
         st.title("Histograms"),
-
+        
         # Visualization: Feature Drift using Plotly
         st.subheader("Feature Drift Visualization using Plotly")
 
@@ -66,7 +66,7 @@ tabs = st.sidebar.tabs(label='Navigation', children=[
     st.sidebar.tab(label='Metrics', children=[
         # Content for Metrics tab
         st.title("Metrics"),
-
+        
         # Visualization: Kolmogorov-Smirnov Distance and Jensen-Shannon Divergence
         st.subheader("Data Drift Metrics")
 
