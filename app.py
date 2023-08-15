@@ -53,15 +53,7 @@ tabs = st.sidebar.tabs(label='Navigation', children=[
         
         # Visualization: Feature Drift using Plotly
         st.subheader("Feature Drift Visualization using Plotly"),
-
-        for col in baseline_data.columns:
-            df_concat = pd.concat([baseline_data[[col]], new_data[[col]]], keys=['Baseline', 'Incoming'], names=['Source'])
-
-            fig = px.histogram(
-                df_concat.reset_index(),  # Reset index to avoid issues with multi-index
-                x=col, color='Source', nbins=30, opacity=0.7, barmode='overlay', title=f"{col} Distribution Comparison"
-            )
-            st.plotly_chart(fig)
+        # ... (rest of your Histograms content)
     ]),
     st.sidebar.tab(label='Metrics', children=[
         # Content for Metrics tab
@@ -69,17 +61,7 @@ tabs = st.sidebar.tabs(label='Navigation', children=[
         
         # Visualization: Kolmogorov-Smirnov Distance and Jensen-Shannon Divergence
         st.subheader("Data Drift Metrics"),
-
-        st.write("Kolmogorov-Smirnov Distance:"),
-        st.write("Feature-wise p-values:", p_values),
-
-        js_divergences = []
-        for col in baseline_data.columns:
-            p = np.concatenate([baseline_data[col], new_data[col]])
-            q = np.concatenate([new_data[col], baseline_data[col]])
-            js_divergence = 0.5 * (entropy(p, 0.5 * (p + q)) + entropy(q, 0.5 * (p + q)))
-            js_divergences.append(js_divergence)
-        st.write("Jensen-Shannon Divergence:", js_divergences)
+        # ... (rest of your Metrics content)
     ])
 ])
 
