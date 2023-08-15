@@ -28,13 +28,13 @@ tabs = st.sidebar.tabs(label='Navigation', children=[
         # Content for Data Drift tab
         st.title("Data Drift Monitoring App"),
         
-        st.subheader("Baseline Data")
-        st.write(baseline_data)
+        st.subheader("Baseline Data"),
+        st.write(baseline_data),
 
-        st.subheader("New Data")
-        st.write(new_data)
+        st.subheader("New Data"),
+        st.write(new_data),
 
-        st.subheader("Data Drift Detection")
+        st.subheader("Data Drift Detection"),
 
         # Detect data drift using Kolmogorov-Smirnov test
         p_values = detect_data_drift(baseline_data, new_data)
@@ -52,7 +52,7 @@ tabs = st.sidebar.tabs(label='Navigation', children=[
         st.title("Histograms"),
         
         # Visualization: Feature Drift using Plotly
-        st.subheader("Feature Drift Visualization using Plotly")
+        st.subheader("Feature Drift Visualization using Plotly"),
 
         for col in baseline_data.columns:
             df_concat = pd.concat([baseline_data[[col]], new_data[[col]]], keys=['Baseline', 'Incoming'], names=['Source'])
@@ -68,10 +68,10 @@ tabs = st.sidebar.tabs(label='Navigation', children=[
         st.title("Metrics"),
         
         # Visualization: Kolmogorov-Smirnov Distance and Jensen-Shannon Divergence
-        st.subheader("Data Drift Metrics")
+        st.subheader("Data Drift Metrics"),
 
-        st.write("Kolmogorov-Smirnov Distance:")
-        st.write("Feature-wise p-values:", p_values)
+        st.write("Kolmogorov-Smirnov Distance:"),
+        st.write("Feature-wise p-values:", p_values),
 
         js_divergences = []
         for col in baseline_data.columns:
